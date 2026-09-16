@@ -1,0 +1,20 @@
+name: Deploy HTML Files to AppService - WDDE395
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v1
+        with:
+          app-name: 'WDDE395-UMGC-cwilliams707'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AppServiceWDDE395 }}
