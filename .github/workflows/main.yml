@@ -10,11 +10,12 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@v4
 
       - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v1
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'WDDE395-UMGC-cwilliams707'
           slot-name: 'production'
           publish-profile: ${{ secrets.AppServiceWDDE395 }}
+          package: '.'
